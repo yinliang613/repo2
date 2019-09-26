@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 计算任意个数的和
+        function fun() {
+            var sum = 0;
+            for(var i = 0;i<arguments.length;i++){
+                sum = sum+arguments[i];
+            }
+            return sum;
+        }
+        var fun2 = fun(1,12,2,3,24234);
+        alert(fun2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

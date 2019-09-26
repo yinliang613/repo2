@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	var p = new Array;
+p[0]=$(".page0");
+p[1]=$(".page1");
+p[2]=$(".page2");
+p[3]=$(".page3");
+
+$("#before").click(function(){
+			if(!$(p[0]).hasClass("flip-animation-start")){
+				$(p[0]).addClass('flip-animation-start zdex1').removeClass('flip-animation-end zdex4');
+			}
+			else if($(p[0]).hasClass("flip-animation-start")&&!$(p[1]).hasClass("flip-animation-start")){
+				$(p[1]).removeClass('flip-animation-end zdex3').addClass('flip-animation-start zdex2');
+			}
+			else if($(p[1]).hasClass("flip-animation-start")&&!$(p[2]).hasClass("flip-animation-start")){
+				$(p[2]).removeClass('flip-animation-end zdex2').addClass('flip-animation-start zdex3');
+			}
+			else if($(p[2]).hasClass("flip-animation-start")&&!$(p[3]).hasClass("flip-animation-start")){
+				$(p[3]).removeClass('flip-animation-end zdex1').addClass('flip-animation-start zdex4');
+			}
+		});
+$("#after").click(function(){
+	if($(p[3]).hasClass("flip-animation-start")&&!$(p[3]).hasClass("flip-animation-end")){
+	$(p[3]).removeClass('flip-animation-start zdex4').addClass('flip-animation-end zdex1');	
+	}
+	else if($(p[2]).hasClass("flip-animation-start")&&!$(p[2]).hasClass("flip-animation-end")){
+	$(p[2]).removeClass('flip-animation-start zdex3').addClass('flip-animation-end zdex2');	
+	}
+	else if($(p[1]).hasClass("flip-animation-start")&&!$(p[1]).hasClass("flip-animation-end")){
+	$(p[1]).removeClass('flip-animation-start zdex2').addClass('flip-animation-end zdex3');	
+	}
+	else if($(p[0]).hasClass("flip-animation-start")&&!$(p[0]).hasClass("flip-animation-end")){
+	$(p[0]).removeClass('flip-animation-start zdex1').addClass('flip-animation-end zdex4');	
+	}
+});
+});
+</script>
+<style>
+body {
+	transform-style: preserve-3d;
+}
+.book {
+	height: 10rem;
+	width: 40%;
+	background: #FFF;
+	position: absolute;
+	right: 10%;
+	top: 4rem;
+	transform: rotateX(30deg);
+	-webkit-transform: rotateX(30deg);
+	-ms-transform: rotateX(30deg);
+	-o-transform: rotateX(30deg);
+}
+/*每页的公共样式*/
+.book-page {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 10rem;
+	border: 1px solid #1976D2;
+	text-align: center;
+	background-color:#0F3;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.zdex1{
+	z-index:10;
+	}
+.zdex2{
+	z-index:16;
+}
+.zdex3{
+	z-index:25;
+}
+.zdex4{
+	z-index:34;
+}
+.book-page p {
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	color: #ff6300;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+/*首页样式*/
+.first-page {
+	background-color: #1976D2;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+/*动画部分*/
+	/*I'm the home page动画*/
+.flip-animation-start {
+	animation: flipBook1 3s forwards;
+	-moz-animation: flipBook1 3s forwards; /* Firefox */
+	-webkit-animation: flipBook1 3s forwards; /* Safari and Chrome */
+	-o-animation: flipBook1 3s forwards; /* Opera */
+}
+.flip-animation-end {
+	animation: flipBook2 3s forwards;
+	-moz-animation: flipBook2 3s forwards; /* Firefox */
+	-webkit-animation: flipBook2 3s forwards; /* Safari and Chrome */
+	-o-animation: flipBook2 3s forwards; /* Opera */
+}
+ @keyframes flipBook1 {
+ 0% {
+ -webkit-transform: rotateY(0deg);
+ -ms-transform: rotateY(0deg);
+ -o-transform: rotateY(0deg);
+ transform: rotateY(0deg);
+ transform-origin:left;
+}
+ 100% {
+ -webkit-transform: rotateY(-160deg);
+ -ms-transform: rotateY(-160deg);
+ -o-transform: rotateY(-160deg);
+ transform: rotateY(-160deg);
+ transform-origin:left;
+}
+}
+    /*关闭书页*/
+	@keyframes flipBook2 {
+ 0% {
+ -webkit-transform: rotateY(-160deg);
+ -ms-transform: rotateY(-160deg);
+ -o-transform: rotateY(-160deg);
+ transform: rotateY(-160deg);
+ transform-origin:left;
+}
+ 100% {
+ -webkit-transform: rotateY(0deg);
+ -ms-transform: rotateY(0deg);
+ -o-transform: rotateY(0deg);
+ transform: rotateY(0deg);
+ transform-origin:left;
+}
+}
+.back_book_page {
+	width: 100%;
+	background: #ff6300;
+	height: 10rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.back_book_page>p {
+	color: white;
+	font-size: 1.2rem;
+	text-align: center;
+	margin-top: 2rem;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.preserve-3d {
+	transform-style: preserve-3d;
+}
+.page0,.page1,.page2,.page3{
+	position:relative;
+	}
+</style>
+</head>
+
+<body >
+<div class="book preserve-3d">
+  <div class="now_page point preserve-3d page3 zdex1" >
+    <div class="book-page">
+      <p>第三页</p>
+    </div>
+    <div class="back_book_page " >
+      <p>反面4</p>
+    </div>
+  </div>
+  <div class="now_page point preserve-3d page2 zdex2" >
+    <div class="book-page">
+      <p>第二页</p>
+    </div>
+    <div class="back_book_page">
+      <p>反面3</p>
+    </div>
+  </div>
+  <div class="now_page point preserve-3d page1 zdex3">
+    <div class="book-page ">
+      <p>第一页</p>
+    </div>
+    <div class="back_book_page">
+      <p>反面2</p>
+    </div>
+  </div>
+  
+  <!--封面-->
+  <div class="point now_page  preserve-3d page0 zdex4" >
+    <div class="book-page ">
+      <p>封面</p>
+    </div>
+    <div class="back_book_page">
+      <p>反面1</p>
+    </div>
+  </div>
+</div>
+<button id="before"  type="button">下一页</button>
+<button id="after" type="button">上一页</button>
+</body>
+</html>

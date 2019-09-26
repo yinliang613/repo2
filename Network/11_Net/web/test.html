@@ -1,0 +1,169 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function(){
+$('.now_page').click(function(){
+			if(!$(this).hasClass('flip-animation-start')){
+				$(this).removeClass('flip-animation-end').addClass('flip-animation-start');
+							}else{
+				$(this).removeClass('flip-animation-start').addClass('flip-animation-end');
+			}
+		});
+});
+
+</script>
+<style>
+.book {
+	height: 400px;
+	width: 300px;
+	background: #FFF;
+	position: absolute;
+	margin: 0 400px;
+	transform: rotateX(30deg);
+	-webkit-transform: rotateX(30deg);
+	-ms-transform: rotateX(30deg);
+	-o-transform: rotateX(30deg);
+}
+/*每页的公共样式*/
+.point {
+}
+.book-page {
+	position: absolute;
+	width: 400px;
+	height: 300px;
+	border: 1px solid #1976D2;
+	text-align: center;
+	background-color: #fff;
+	backface-visibility: hidden;
+}
+.book-page p {
+	font-size: 20px;
+	margin-top: 0px;
+	color: #ff6300;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+/*首页样式*/
+.first-page {
+	background-color: #1976D2;
+}
+/*动画部分*/
+	/*I'm the home page动画*/
+.flip-animation-start {
+	animation: flipBook1 3s forwards;
+	-moz-animation: flipBook1 3s forwards; /* Firefox */
+	-webkit-animation: flipBook1 3s forwards; /* Safari and Chrome */
+	-o-animation: flipBook1 3s forwards; /* Opera */
+}
+.flip-animation-end {
+	animation: flipBook2 3s forwards;
+	-moz-animation: flipBook2 3s forwards; /* Firefox */
+	-webkit-animation: flipBook2 3s forwards; /* Safari and Chrome */
+	-o-animation: flipBook2 3s forwards; /* Opera */
+}
+ @keyframes flipBook1 {
+ 0% {
+ -webkit-transform: rotateY(0deg);
+ -ms-transform: rotateY(0deg);
+ -o-transform: rotateY(0deg);
+ transform: rotateY(0deg);
+ transform-origin:left;
+}
+ 100% {
+ -webkit-transform: rotateY(-160deg);
+ -ms-transform: rotateY(-160deg);
+ -o-transform: rotateY(-160deg);
+ transform: rotateY(-160deg);
+ transform-origin:left;
+}
+}
+/*关闭书页*/
+.preserve-3d {
+	transform-style: preserve-3d;
+}
+ @keyframes flipBook2 {
+ 0% {
+ -webkit-transform: rotateY(-160deg);
+ -ms-transform: rotateY(-160deg);
+ -o-transform: rotateY(-160deg);
+ transform: rotateY(-160deg);
+ transform-origin:left;
+}
+ 100% {
+ -webkit-transform: rotateY(0deg);
+ -ms-transform: rotateY(0deg);
+ -o-transform: rotateY(0deg);
+ transform: rotateY(0deg);
+ transform-origin:left;
+}
+}
+/*反面*/
+.back_book_page {
+	width: 400px;
+	background: #ff6300;
+	height: 300px;
+	position:absolute;
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+}
+.back_book_page>p {
+	color: #000;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 0px;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+}
+</style>
+</head>
+
+<body>
+<div class="book preserve-3d">
+  <div class="now_page point preserve-3d">
+    <div class="book-page">
+      <p>第三页</p>
+    </div>
+    <div class="back_book_page preserve-3d">
+      <p>反面</p>
+    </div>
+  </div>
+  <div class="now_page point preserve-3d">
+    <div class="book-page">
+      <p>第二页</p>
+    </div>
+    <div class="back_book_page">
+      <p>反面</p>
+    </div>
+  </div>
+  <div class="now_page point preserve-3d">
+    <div class="book-page ">
+      <p>第一页</p>
+    </div>
+    <div class="back_book_page">
+      <p>反面</p>
+    </div>
+  </div>
+  
+  <!--封面-->
+  <div class="point now_page preserve-3d">
+    <div class="book-page ">
+      <p>封面</p>
+    </div>
+    <div class="back_book_page">
+      <p>反面</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

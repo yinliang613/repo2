@@ -1,0 +1,87 @@
+body{
+    background: url("../img/register_bg.png") no-repeat center;
+
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.main{
+    width: 900px;
+    height: 500px;
+    margin: auto;
+    background: white;
+    margin-top: 20px;
+    border: 8px solid #EEEEEE;
+
+}
+.left{
+
+    float: left;
+    margin: 15px;
+
+}
+.left > p:first-child{
+    color:#FFD026;
+    font-size: 20px;
+}
+.left > p:last-child{
+    color:#A6A6A6;
+    font-size: 20px;
+}
+.center{
+
+    float: left;
+
+}
+.right{
+
+    float: right;
+    margin: 15px;
+
+}
+.right  p{
+    font-size: 15px;
+
+}
+.right p a {
+    color:pink;
+}
+.td_left{
+    width: 100px;
+    text-align: right;
+    height: 45px;
+}
+.td_right{
+    padding-left: 50px ;
+}
+
+#username,#password,#email,#name,#tel,#birthday,#checkcode{
+    width: 251px;
+    height: 32px;
+    border: 1px solid #A6A6A6 ;
+    /*设置边框圆角*/
+    border-radius: 5px;
+    padding-left: 10px;
+}
+#checkcode{
+    width: 110px;
+}
+
+#img_check{
+    height: 32px;
+    /*垂直居中*/
+    vertical-align: middle;
+}
+
+#btn_sub{
+
+    width: 150px;
+    height: 40px;
+    background-color: #FFD026;
+    border: 1px solid #FFD026 ;
+}
+#td_sub{
+    padding-left: 100px;
+}

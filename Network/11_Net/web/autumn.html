@@ -1,0 +1,433 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="mycss1.css">
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	var p = new Array;
+p[0]=$(".page0");
+p[1]=$(".page1");
+p[2]=$(".page2");
+p[3]=$(".page3");
+p[4]=$(".page4");
+
+$("#after").click(function(){
+			if(!$(p[0]).hasClass("flip-animation-start")){
+				$(p[0]).addClass('flip-animation-start zdex0').removeClass('flip-animation-end zdex4');
+			}
+			else if($(p[0]).hasClass("flip-animation-start")&&!$(p[1]).hasClass("flip-animation-start")){
+				$(p[1]).removeClass('flip-animation-end zdex3').addClass('flip-animation-start zdex1');
+			}
+			else if($(p[1]).hasClass("flip-animation-start")&&!$(p[2]).hasClass("flip-animation-start")){
+				$(p[2]).removeClass('flip-animation-end zdex2').addClass('flip-animation-start zdex2');
+			}
+			else if($(p[2]).hasClass("flip-animation-start")&&!$(p[3]).hasClass("flip-animation-start")){
+				$(p[3]).removeClass('flip-animation-end zdex1').addClass('flip-animation-start zdex3');
+			}
+			else if($(p[3]).hasClass("flip-animation-start")&&!$(p[4]).hasClass("flip-animation-start")){
+				$(p[4]).removeClass('flip-animation-end zdex0').addClass('flip-animation-start zdex4');
+			}
+		});
+$("#before").click(function(){
+	if($(p[4]).hasClass("flip-animation-start")&&!$(p[4]).hasClass("flip-animation-end")){
+	$(p[4]).removeClass('flip-animation-start zdex4').addClass('flip-animation-end zdex0');	
+	}
+	else if($(p[3]).hasClass("flip-animation-start")&&!$(p[3]).hasClass("flip-animation-end")){
+	$(p[3]).removeClass('flip-animation-start zdex3').addClass('flip-animation-end zdex1');	
+	}
+	else if($(p[2]).hasClass("flip-animation-start")&&!$(p[2]).hasClass("flip-animation-end")){
+	$(p[2]).removeClass('flip-animation-start zdex2').addClass('flip-animation-end zdex2');	
+	}
+	else if($(p[1]).hasClass("flip-animation-start")&&!$(p[1]).hasClass("flip-animation-end")){
+	$(p[1]).removeClass('flip-animation-start zdex1').addClass('flip-animation-end zdex3');	
+	}
+	else if($(p[0]).hasClass("flip-animation-start")&&!$(p[0]).hasClass("flip-animation-end")){
+	$(p[0]).removeClass('flip-animation-start zdex0').addClass('flip-animation-end zdex4');	
+	}
+});
+});
+</script>
+<style>
+body {
+	background-image: url(img/08.jpg);
+	color: #FFF;
+	background-size: cover;
+	transform-style: preserve-3d;
+}
+.book {
+	height: 640px;
+	width: 480px;
+	position: relative;
+	margin: 0 auto;
+	transform: rotateX(30deg);
+	-webkit-transform: rotateX(30deg);
+	-ms-transform: rotateX(30deg);
+	-o-transform: rotateX(30deg);
+}
+/*每页的公共样式*/
+.book-page {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 480px;
+	height: 640px;
+	border-radius: 0 20px 20px 0;
+	text-align: center;
+	background-image: url(img/background.jpg);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.book-page p {
+	font-size: 20px;
+	margin: 50px 50px;
+	color:#000;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+/*动画部分*/
+	/*I'm the home page动画*/
+.flip-animation-start {
+	animation: flipBook1 3s forwards;
+	-moz-animation: flipBook1 3s forwards; /* Firefox */
+	-webkit-animation: flipBook1 3s forwards; /* Safari and Chrome */
+	-o-animation: flipBook1 3s forwards; /* Opera */
+}
+.flip-animation-end {
+	animation: flipBook2 3s forwards;
+	-moz-animation: flipBook2 3s forwards; /* Firefox */
+	-webkit-animation: flipBook2 3s forwards; /* Safari and Chrome */
+	-o-animation: flipBook2 3s forwards; /* Opera */
+}
+ @keyframes flipBook1 {
+ 0% {
+ -webkit-transform: rotateY(0deg);
+ -ms-transform: rotateY(0deg);
+ -o-transform: rotateY(0deg);
+ transform: rotateY(0deg);
+ transform-origin:left;
+}
+ 100% {
+ -webkit-transform: rotateY(-170deg);
+ -ms-transform: rotateY(-170deg);
+ -o-transform: rotateY(-170deg);
+ transform: rotateY(-170deg);
+ transform-origin:left;
+}
+}
+    /*关闭书页*/
+	@keyframes flipBook2 {
+ 0% {
+ -webkit-transform: rotateY(-170deg);
+ -ms-transform: rotateY(-170deg);
+ -o-transform: rotateY(-170deg);
+ transform: rotateY(-170deg);
+ transform-origin:left;
+}
+ 100% {
+ -webkit-transform: rotateY(0deg);
+ -ms-transform: rotateY(0deg);
+ -o-transform: rotateY(0deg);
+ transform: rotateY(0deg);
+ transform-origin:left;
+}
+}
+.back_book_page {
+	width: 480px;
+	border-radius: 20px 0 0 20px;
+	background: #999;
+	height: 640px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: rotateY(180deg);
+	border-right: dotted 3px #000000;
+	background-image: url(img/background.jpg);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.dotted {
+	border-left: dotted 3px #000000;
+}
+.dotted-1 {
+	left: 3px;
+}
+.back_book_page>p {
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	position: relative;
+	display: block;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.zdex0{
+	z-index: 6;
+	}
+.zdex1 {
+	z-index: 10;
+}
+.zdex2 {
+	z-index: 16;
+}
+.zdex3 {
+	z-index: 25;
+}
+.zdex4 {
+	z-index: 34;
+}
+.page0, .page1, .page2, .page3, .page4 {
+	position: relative;
+}
+.p3 {
+	box-shadow: -6px 6px 12px #000000;
+}
+#before {
+	position: absolute;
+	cursor: pointer;
+	top: 725px;
+	left: 360px;
+	background-color: #C66;
+	border: none;
+	padding: 12px 12px;
+	border-radius: 6px;
+	font-size: 18px;
+	color: #FFF;
+	margin-bottom: 30px;
+}
+#after {
+	cursor: pointer;
+	position: absolute;
+	padding: 12px 12px;
+	top: 725px;
+	right: 360px;
+	background-color: #C66;
+	border-radius: 6px;
+	font-size: 18px;
+	border: none;
+	color: #FFF;
+	margin-bottom: 30px;
+}
+#before:hover, #after:hover {
+	background-color: #333;
+	transition: all 1s;
+}
+.p1 img {
+	border-radius: 10px;
+}
+.p1 {
+	color: #000;
+	padding: 15px;
+	box-sizing: border-box;
+	line-height: 29px;
+	font-size: 20px;
+	text-align: left;
+}
+@keyframes luo{
+            0%{top: 5%;transform:rotate(-60deg) rotateY(0deg);}
+			10%{transform:rotateY(30deg);  opacity:1;}
+            100%{top: 100%; left:60%; transform:rotate(60deg) rotateY(90deg);}
+}
+@keyframes luo1{
+            0%{top: 10%;transform:rotate(-60deg) rotateY(0deg);}
+			40%{transform:rotateY(40deg);  opacity:1;}
+            100%{top: 100%; left:50%; transform:rotate(200deg) rotateY(90deg);}
+}
+@keyframes luo2{
+            0%{top: 15%;transform:rotate(-60deg) rotateY(0deg);}
+			30%{transform:rotateY(60deg);  opacity:1;}
+            100%{top: 100%; left:40%; transform:rotate(77deg) rotateY(190deg);}
+}
+@keyframes luo3{
+            0%{top: 6%;transform:rotate(-60deg) rotateY(0deg);}
+			50%{transform:rotateY(20deg);  opacity:1;}
+            100%{top: 100%; left:70%; transform:rotate(140deg) rotateY(80deg);}
+}
+@keyframes luo4{
+            0%{top: 20%; left:70%; transform:rotate(-80deg) rotateY(0deg);}
+			60%{transform:rotateY(100deg);  }
+            100%{top: 100%; left:80%; transform:rotate(180deg) rotateY(60deg);}
+}
+@keyframes luo5{
+            0%{top: 8%; left:70%; transform:rotate(-10deg) rotateY(0deg);}
+			20%{transform:rotateY(180deg);  }
+            100%{top: 100%; left:82%; transform:rotate(100deg) rotateY(60deg);}
+}
+@keyframes luo6{
+            0%{top: 13%; left:30%; transform:rotate(-60deg) rotateY(20deg);}
+			20%{transform:rotateY(120deg);  }
+            100%{top: 100%; left:90%; transform:rotate(160deg) rotateY(340deg);}
+}
+@keyframes luo6{
+            0%{top: 24%; left:44%; transform:rotate(234deg) rotateY(10deg);}
+			20%{transform:rotateY(30deg);  }
+            100%{top: 100%; left:86%; transform:rotate(160deg) rotateY(92deg);}
+}
+@keyframes luo7{
+            0%{top: 31%; left:68%; transform:rotate(34deg) rotateY(56deg);}
+			20%{transform:rotateY(10deg);  }
+            100%{top: 100%; left:86%; transform:rotate(160deg) rotateY(84deg);}
+}
+.drop{
+	left:90%;
+	animation:luo 4s forwards;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	transform-style: preserve-3d;
+	position:absolute;
+	 z-index:100;
+	}
+.drop1{
+	top:10%;
+	left:95%;
+	animation:luo1 4s forwards;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	transform-style: preserve-3d;
+	position:absolute;
+	
+	}
+.drop2{
+	top:15%;
+	left:90%;
+	animation:luo2 4s forwards;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	transform-style: preserve-3d;
+	position:absolute;
+	}
+.drop3{
+	left:60%;
+	animation:luo3 4s forwards;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	transform-style: preserve-3d;
+	position:absolute;
+	}
+.drop4{
+	animation:luo4 4s forwards;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	transform-style: preserve-3d;
+	position:absolute;
+	}
+.drop5{
+	animation:luo5 4s forwards;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	transform-style: preserve-3d;
+	position:absolute;
+	}
+.drop6{
+	animation:luo6 4s forwards;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	transform-style: preserve-3d;
+	position:absolute;
+	}
+.drop7{
+	animation:luo7 4s forwards;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	transform-style: preserve-3d;
+	position:absolute;
+	}
+.img{
+	width:50px;
+	height:50px;
+	z-index:99;
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+<div class="head" >
+  <div class="headtitle">antumn </div>
+  <div class="headlead">
+    <ul>
+      <li><a href="index(1).html">主页</a></li>
+      <li><a href="spring.html">春季</a></li>
+      <li><a href="summer.html">夏季</a></li>
+      <li><a href="winter.html">冬季</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="book preserve-3d">
+  <div class="  preserve-3d page4 zdex0">
+    <div class="book-page dotted p3 ">
+    <p>秋季篇完结</p> 
+    <span style=" font-size:20px ;color: #000;top: 480px;left: 220px; position: relative;"><strong>7</strong></span>
+    </div>
+    <div class="back_book_page " >
+    <img src="img/a背面.jpg" style="width:477px; height:640px ; border-radius:20px 0px 0px 20px"/>
+    </div>
+  </div>
+  <div class="  preserve-3d page3 zdex1" >
+    <div class="book-page dotted  p1"> <img src="img/寒露.jpg" style="float:right; margin-left:5px"/> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;寒露(10月8-9日)是农历二十四节气中的第十七个节气，属于秋季的第五个节气，表示秋季时节的正式结束；时间在公历每年10月7日~9日。是太阳到达黄经195°时。《月令七十二候集解》说：“九月节，露气寒冷，将凝结也。”寒露的意思是气温比白露时更低，地面的露水更冷，快要凝结成霜了。寒露时节，南岭及以北的广大地区均已进入秋季，东北进入深秋，西北地区已进入或即将进入冬季。<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;气温逐渐下降。白露、寒露、霜降三个节气，都表示水汽凝结现象，而寒露是气候从凉爽到寒冷的过渡。夜晚，仰望星空，你会发现星空换季，代表盛夏的“大火星”（天蝎座的心宿二星）已西沉。我们可以隐约听到冬天的脚步声了。<br/>
+      <br/>
+      <span style=" float:right"><strong>5</strong></span> </div>
+    <div class="back_book_page p1 " > <img src="img/a霜降.jpg" style="float:left; margin-right:5px"/> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 霜降为农历二十四节气之一，进入此节气天气渐冷，开始有霜。霜降一般是在每年公历的10月23日。这时中国黄河流域一带出现初霜，大部分地区多忙于播种三麦等作物。<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;每年阳历10月23日前后，太阳到达黄经210度时为霜降。霜降表示天气更冷了，露水凝结成霜。《月令七十二候集解》：“九月中，气肃而凝，露结为霜矣”。此时，我国黄河流域已出现白霜，千里沃野上，一片银色冰晶熠熠闪光，此时树叶枯黄，在落叶了。古籍《二十四节气解》中说：“气肃而霜降，阴始凝也。”可见“霜降”表示天气逐渐变冷，开始降霜。<br/>
+      <br/>
+      <br/>
+      <span style=" float:left"><strong>6</strong></span> </div>
+  </div>
+  <div class=" preserve-3d page2 zdex2" >
+    <div class="book-page dotted p1"> <img src="img/白露.jpg" style=" float:right; margin-left:5px"/> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;白露(9月7-9日)是农历二十四节气中的第十五个节气，当太阳到达黄经165度时为白露。<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;白露是秋天的第三个节气，表示孟秋时节的结束和仲秋时节的开始。露水是由于温度降低，水汽在地面或近地物体上凝结而成的水珠。所以，白露实际上是表征天气已经转凉。这时，人们就会明显地感觉到炎热的夏天已过，而凉爽的秋天已经到来了。昼夜温差可达十多度。阳气是在夏至达到顶点，物极必反，阴气也在此时兴起。到了白露，阴气逐渐加重，清晨的露水随之日益加厚，凝结成一层白白的水滴，所以就称之为白露。<br/>
+      <br/>
+      <br/>
+      <br/>
+      <span style=" float:right"><strong>3</strong></span> </div>
+    <div class="back_book_page p1"> <img src="img/秋分.jpg" style="float:left ; margin-right:5px"/> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 秋分(9月22-23日)，农历二十四节气中的第十六个节气。南方的气候由这一节气起才始入秋。一是太阳在这一天到达黄经180°（秋分点），太阳几乎直射地球赤道，全球各地昼夜等长（不考虑大气对太阳光的折射与晨昏蒙影）。秋分过后，太阳直射点继续由赤道向南半球推移，北半球各地开始昼短夜长，即一天之内白昼开始短于黑夜；南半球相反。故秋分也称降分。<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 而在南北两极，秋分这一天，太阳整日都在地平线上。此后，随着太阳直射点的继续南移，北极附近开始为期6个月的极夜，范围逐渐扩大再缩小；南极附近开始为期6个月的极昼，范围逐渐扩大再缩小。
+      2018年6月21日，国务院关于同意设立“中国农民丰收节”的批复发布，同意自2018年起，将每年农历秋分设立为“中国农民丰收节”。<br/>
+      <span style=" float:left"><strong>4</strong></span> </div>
+  </div>
+  <div class="t preserve-3d page1 zdex3">
+    <div class="book-page dotted p1"> <img src="img/a立秋.jpg" style="float:right;  margin-left:5px"/> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;立秋(8月7-9日)，是农历二十四节气中的第13个节气，更是秋天的第一个节气，标志着孟秋时节的正式开始,"秋"就是指暑去凉来。到了立秋，梧桐树开始落叶，因此有“落叶知秋”的成语。从文字角度来看，“秋”字由禾与火字组成，是禾谷成熟的意思。秋季是天气由热转凉，再由凉转寒的过渡性季节。 <br>
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;“立秋”到了，但并不是秋天的气候已经到来了。划分气候季节要根据“候平均温度”，即当地连续5日的平均温度在22摄氏度以下，才算真正秋天的时节。中国地域辽阔，虽各地气候有差别，但此时大部分地区仍未进入秋天气候，况且每年大热三伏天的末伏还在立秋后第3日。尤其是中国南方此节气内还是夏暑之时，同时由于台风雨季节渐去了，气温更酷热，因而中国医学对从立秋起至秋分前这段日子称之为“长夏”。 <span style=" float:right"><strong>1</strong></span> </div>
+    <div class="back_book_page p1"> <img style="float:left; margin-right:5px" src="img/a处暑.jpg"/> &nbsp;&nbsp;&nbsp;&nbsp; 处暑(8月22-24日)，即为“出暑”，是炎热离开的意思。处暑是农历二十四节气之中的第14个节气，时间点为公历8月23日，太阳到达黄经150°。<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;处暑节气意味着即将进入气象意义的秋天，处暑后中国黄河以北地区气温逐渐下降。<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;天文专家称，处暑当天，太阳直射点已经由“夏至”那天的北纬23°26′，向南移动到北纬11°28′。北京城区，白昼长度已经由夏至的15小时缩短到13小时25分钟，正午太阳高度也由夏至的73°32′降低至61°34′，人们可以明显感觉到太阳开始偏南了。随着太阳高度的继续降低，所带来的热力也随之减弱。 <br/>
+      <br/>
+      <br/>
+      <span style=" float:left"><strong>2</strong></span> </div>
+  </div>
+  
+  <!--封面-->
+  <div class="  preserve-3d page0 zdex4" >
+    <div class="book-page "> <img style="border-radius:0px 20px 20px 0px;" src="img/封面.jpg"/> </div>
+    <div class="back_book_page">
+      <div style="    color: #000;
+    top: 220px;
+    text-align: center;
+    position: relative;
+    width: 170px;
+    border-radius: 10px;
+    padding: 20px 0px;
+    margin: 0 150px 0 150px;
+    border: 2px solid #FFFFFF;">作者：<strong>轻狂书生</strong></div>
+    </div>
+  </div>
+</div>
+<div  class="drop" ><img class="img" src="img/b4df0b694a362ca39abe29b813f2dce3.png"/></div>
+<div  class="drop1" ><img class="img" src="img/b4df0b694a362ca39abe29b813f2dce3.png"/></div>
+<div  class="drop2" ><img class="img" src="img/b4df0b694a362ca39abe29b813f2dce3.png"/></div>
+<div  class="drop3" ><img class="img" src="img/b4df0b694a362ca39abe29b813f2dce3.png"/></div>
+<div  class="drop4" ><img class="img" src="img/b4df0b694a362ca39abe29b813f2dce3.png"/></div>
+<div  class="drop5" ><img class="img" src="img/b4df0b694a362ca39abe29b813f2dce3.png"/></div>
+<div  class="drop6" ><img  src="img/b4df0b694a362ca39abe29b813f2dce3.png" width="62" height="41"/></div>
+<div  class="drop7" ><img  src="img/b4df0b694a362ca39abe29b813f2dce3.png" width="92" height="61"/></div>
+<a id="before"  >上一页</a> <a id="after" >下一页</a>
+</body>
+</html>

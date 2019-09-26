@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head >
+<meta charset="UTF-8">
+<title>二十四节气</title>
+<link rel="stylesheet" type="text/css" href="mycss1.css">
+<script src="jquery-3.3.1.min.js" type="text/javascript"></script>
+</head>
+<script>
+$(document).ready(function(){
+var music = document.getElementById("bgMusic");
+var img = document.getElementById("tu");
+$("#audioBtn").click(function(){
+if(music.paused){music.play();
+$("#audioBtn").removeClass("pause").addClass("play");
+img.src="img/play.png"
+}else{music.pause();
+$("#audioBtn").removeClass("play").addClass("pause");
+img.src="img/pause.png";
+}});
+});
+</script>
+<style>
+
+
+.mscBtn {
+	height: 50px;
+	width: 50px;
+
+	background-size: contain;
+	margin: 10px 10px;
+	float: left;
+	display: block;
+}
+
+</style>
+<body>
+<div class="head">
+  <audio id="bgMusic" src="music/地球之盐.mp3" autoplay="autoplay"></audio>
+  <a class="mscBtn" id="audioBtn"  style="cursor:pointer;"><img id="tu" src="img/play.png" width="50px" height="50px"/></a>
+  <div class="headlead">
+    <ul>
+      <li><a href="spring.html">春季</a></li>
+      <li><a href="summer.html">夏季</a></li>
+      <li><a href="autumn.html">秋季</a></li>
+      <li><a href="winter.html">冬季</a></li>
+      <li ><a href="#" id="video">视频</a></li>
+    </ul>
+  </div>
+</div>
+<div class="banner" id="b04">
+  <ul>
+    <li class="slider-item"><a href="#"><img src="img/01.jpg" ;><span class="slider-title"><em>春季是一年的第一个季节，有很多划分四季的方法。在日常生活中，人们通常把立春节气的到来作为春季的开始，立春是从天文学角度来划定的。</em></span></a></li>
+    <li class="slider-item"><a href="#"><img src="img/02.jpg" ;><span class="slider-title"><em>在中国夏季从立夏(每年5月5日至7日之间）开始，到立秋结束</em></span></a></li>
+    <li class="slider-item"><a href="#"><img src="img/03.jpg" ;><span class="slider-title"><em>秋季是春夏秋冬四季之一。从气象意义上划分，北温带的秋季在8月23日（处暑）~11月20日（小雪）；南温带的秋季在2月19日~5月21日</em></span></a></li>
+    <li class="slider-item"><a href="#"><img src="img/04.jpg" ;><span class="slider-title"><em>冬季是四季之一，秋春之间的季节。天文学上认为是从12月至3月，中国习惯指立冬到立春的三个月时间</em></span></a></li>
+  </ul>
+  <a href="javascript:void(0);" class="unslider-arrow04 prev"><img class="arrow" id="al" src="img/arrowl.png" alt="prev" width="20" height="35"></a> <a href="javascript:void(0);" class="unslider-arrow04 next"><img class="arrow" id="ar" src="img/arrowr.png" alt="next" width="20" height="37"></a> </div>
+<div align="center">
+  <video src="videolib_repo%2F1802%2F09%2FoITZj5970%2FHD%2FoITZj5970-mobile.mp4"  controls="播放"  />
+</div>
+
+<script src="js/unslider.min.js"></script> 
+<script>
+$(document).ready(function(e) {
+	var progress = $(".progress"),li_width = $("#b04 li").length;
+    var unslider04 = $('#b04').unslider({
+		dots: true,
+		complete:function(index){//自己添加的，官方没有
+			progress.animate({"width":(100/li_width)*(index+1)+"%"});
+		}
+	}),
+
+	data04 = unslider04.data('unslider');
+	$('.unslider-arrow04').click(function() {
+        var fn = this.className.split(' ')[1];
+        data04[fn]();
+    });
+});
+$(document).ready(function(){
+	$("#video").click(function(){
+		$("video").slideToggle("slow");
+		
+		
+	});
+});
+
+</script>
+<div class="font1">二十四节气（24 solar terms），是指中国农历中表示季节变迁的24个特定节令，是根据地球在黄道（即地球绕太阳公转的轨道）上的位置变化而制定的，每一个分别相应于地球在黄道上每运动15°所到达的一定位置。</div>
+<br/>
+<div class="font2">二十四节气，于中国先秦时期就已经订立、到汉代完全确立的用来指导农事的补充历法，是通过观察太阳周年运动，认知一年中时令、气候、物候等方面变化规律所形成的知识体系。它把太阳周年运动轨迹划分为24等份，每一等份为一个节气，始于立春，终于大寒，周而复始，既是历代官府颁布的时间准绳，也是指导农业生产的指南针，日常生活中人们预知冷暖雪雨的指南针，是中华民族劳动人民长期经验的积累成果和智慧的结晶。</div>
+</body>
+</html>
